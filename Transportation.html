@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Car Rental & Save</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="Transportation.css">
+</head>
+<body>
+    <header>
+        <div>
+            <div class="logo">TRAVEL<span>Center</span></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Hotels.html">Hotels</a></li>
+                <li><a href="Plane.html">Plane</a></li>
+                <li><a href="Transportation.html" class="active">Transportation</a></li>
+                <li><a href="Attractions.html">Attractions</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="payment.php">Payments</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <main class="containertran">
+        <h1>Compare Car Rental & Save!</h1>
+        <form class="rental-formtran" id="transportation-search-form">
+            <div class="form-grouptran">
+                <label for="pickup-location">Pick-Up Location</label>
+                <input type="text" id="pickup-location" placeholder="Pick-Up Location">
+            </div>
+            <div class="form-grouptran">
+                <label for="pickup-date">Pick-Up Date</label>
+                <input type="date" id="pickup-date" value="2024-12-27">
+            </div>
+            <div class="form-grouptran">
+                <label for="dropoff-date">Drop-Off Date</label>
+                <input type="date" id="dropoff-date" value="2024-01-03">
+            </div>
+            <div class="form-grouptran">
+                <label><input type="checkbox"> Return to Different Location</label>
+            </div>
+            <div class="form-grouptran">
+                <label><input type="checkbox"> Alert me when prices change</label>
+            </div>
+            <button type="button" id="searchButton">Search</button>
+        </form>
+
+        <!-- Results Section -->
+        <div class="results-container">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const pickupLocation = document.getElementById('pickup-location').value;
+            const pickupDate = document.getElementById('pickup-date').value;
+            const dropoffDate = document.getElementById('dropoff-date').value;
+
+            // Clear previous results
+            document.querySelector('.results-container').innerHTML = '';
+
+            fetch('search_transportation.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `pickup-location=${pickupLocation}&pickup-date=${pickupDate}&dropoff-date=${dropoffDate}`,
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('.results-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

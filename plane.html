@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Dream Flight For Less</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="plane.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body class="plane-page">
+    <header>
+        <div>
+            <div class="logo">TRAVEL<span>Center</span></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Hotels.html">Hotels</a></li>
+                <li><a href="Plane.html" class="active">Plane</a></li>
+                <li><a href="Transportation.html">Transportation</a></li>
+                <li><a href="Attractions.html">Attractions</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="payment.php">Payments</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1>Book Your Dream Flight For Less</h1>
+        <div class="plane-search-container">
+            <form class="plane-search" id="plane-search-form">
+                <div class="input-group">
+                    <span class="icon">📍</span>
+                    <input type="text" id="from" name="from" placeholder="From where?" required />
+                </div>
+                <div class="input-group">
+                    <i class="icon">✈</i>
+                    <input type="text" id="to" name="to" placeholder="To where?" required />
+                </div>
+                <div class="input-group">
+                    <label>DEPART</label>
+                    <input type="date" id="depart" name="depart" required />
+                </div>
+                <div class="input-group">
+                    <label>RETURN</label>
+                    <input type="date" id="return" name="return" required />
+                </div>
+                <button type="button" id="searchButton" class="search-button">Search</button>
+            </form>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-container">
+            <!-- The results will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+            const depart = document.getElementById('depart').value;
+            const returnDate = document.getElementById('return').value;
+
+            // Clear previous results
+            document.querySelector('.results-container').innerHTML = '';
+
+            fetch('search_plane.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `from=${from}&to=${to}&depart=${depart}&return=${returnDate}`,
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('.results-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function bookFlight(name, from, to, date)
+        {
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = 'payment.php'; // Send plane data to payment page
+          form.innerHTML = `
+          <input type="hidden" name="plane_name" value="${name}">
+          <input type="hidden" name="flight_from" value="${from}">
+          <input type="hidden" name="flight_to" value="${to}">
+          <input type="hidden" name="flight_date" value="${date}">  `;
+         document.body.appendChild(form);
+         form.submit();
+        }      
+    </script>
+</body>
+</html>

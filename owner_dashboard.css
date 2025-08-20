@@ -1,0 +1,157 @@
+/* Global Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Full-width header */
+header {
+    background-color: #0b2e6b;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .logo span {
+    color: rgb(85, 161, 233);
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header .nav-links li {
+    margin-left: 20px;
+}
+
+header .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+header .nav-links a:hover {
+    color: rgb(85, 161, 233);
+}
+
+header .nav-links .active {
+    font-weight: bold;
+    color: rgb(54, 132, 205);
+}
+
+/* Main Container Styling */
+.dashboard-container {
+    padding: 40px;
+    text-align: center;
+}
+
+.dashboard-container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.owner-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.owner-info h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.owner-info p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Results Table */
+.results-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.results-table thead {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.results-table th,
+.results-table td {
+    padding: 10px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.results-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.results-table td {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .plane-search {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
+
+    .search-button {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .results-table {
+        font-size: 12px;
+    }
+}
+
+/* Styling for the logout button */
+.logout-btn {
+    font-size: 18px;
+    border: none;
+    background-color: #0b2e6b;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    color: white;
+    border-radius: 5px;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}

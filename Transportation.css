@@ -1,0 +1,167 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: Arial, sans-serif;
+  background-image: url("the-love-of-traveling-1600x832.jpg");
+  background-size: cover;
+  color: #0a0a0a;
+}
+
+/* Full-width header */
+header {
+  background-color: #0b2e6b;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header .logo span {
+  color: rgb(85, 161, 233);
+}
+
+header .nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header .nav-links li {
+  margin-left: 20px;
+}
+
+header .nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+header .nav-links a:hover {
+  color: rgb(85, 161, 233);
+}
+
+header .nav-links .active {
+  font-weight: bold;
+  color: rgb(54, 132, 205);
+}
+
+.containertran h1{
+    color: #090909;
+}
+.containertran {
+    max-width: 1150px;
+    margin: 4rem auto;
+    padding: 1rem;
+    border-radius: 30px;
+    background : #ffffffb0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+  
+.containertran h1 {
+   font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+  
+  .rental-formtran {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    
+  }
+  
+  .form-grouptran {
+    flex: 1 1 calc(33.333% - 1rem);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-grouptran input,
+  .form-grouptran select,
+  button {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color:#0056b3;
+  };
+/* Results Container */
+.results-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual Result Item */
+.result-item {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding: 25px 0;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Details for each result */
+.result-item .details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-item .details h3 {
+  margin: 0;
+  font-size: 22px;
+  color: #333;
+}
+
+.result-item .details p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.result-item .book-button {
+  background-color: #28a745; /* Green color */
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.result-item .book-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+.transportation-image {
+  width: 300px; /* Set the image size */
+  height: auto;
+  margin-right: 20px;
+  border-radius: 8px;
+}

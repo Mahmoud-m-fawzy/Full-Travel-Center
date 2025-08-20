@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="regstartion_design.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">TRAVEL<span>Center</span></div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="Hotels.html">Hotels</a></li>
+            <li><a href="Plane.html">Plane</a></li>
+            <li><a href="Transportation.html">Transportation</a></li>
+            <li><a href="Attractions.html">Attractions</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="registration.html" class="active">Registration</a></li>
+
+        </ul>
+    </header>
+
+    <!-- Registration Form Section -->
+    <div class="form-container">
+        <form id="registrationForm" action="register.php" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+        
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="birthday" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+        
+            <!-- Hidden input to signal registration action -->
+            <input type="hidden" name="register" value="true">
+        
+            <button type="submit">Register</button>
+        </form>
+        <div id="error-message" style="color: red; margin-top: 10px;"></div>
+    </div>
+
+    <script src="registration.js"></script>
+</body>
+</html>

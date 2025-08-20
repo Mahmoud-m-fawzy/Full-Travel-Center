@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website - Login</title>
+    <link rel="stylesheet" href="design.css">
+</head>
+<body>
+    <header>
+        <div>
+            <div class="logo">TRAVEL<span>Center</span></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Hotels.html">Hotels</a></li>
+                <li><a href="Plane.html">Plane</a></li>
+                <li><a href="Transportation.html">Transportation</a></li>
+                <li><a href="Attractions.html">Attractions</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="login.html" class="active">Login</a></li>
+                <li><a href="registration.html">Registration</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <div class="form-container">
+                <form id="loginForm"  action="login.php"  method="POST">
+                    <div class="tabs">
+                        <p>Login</p>
+                    </div>
+                    <div class="form-fields">
+                        <div class="top">
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="down">
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                        </div>
+                        
+                        <!-- Hidden input to signal login action -->
+                        <input type="hidden" name="login" value="true">
+
+                        <button type="submit" name="login">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div class="hero-text">
+                <h1>LET'S GO TRAVEL!</h1>
+                <p>10 PLACES TO DISCOVER</p>
+                <p>Travel the world and explore new horizons, discovering cultures, landscapes, and unforgettable memories.</p>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <header>
+        <div>
+            <div class="logo">TRAVEL<span>Center</span></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Hotels.html" class="active">Hotels</a></li>
+                <li><a href="Plane.html">Plane</a></li>
+                <li><a href="Transportation.html">Transportation</a></li>
+                <li><a href="Attractions.html">Attractions</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="payment.php">Payments</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="search-stays">
+        <h1>Search stays</h1>
+        <form id="search-form" class="search-form" method="POST" action="search.php">
+            <div class="form-group">
+                <span class="icon">📍</span>
+                <input type="text" id="city" name="city" placeholder="Where to?"/>
+            </div>
+            <div class="form-group">
+                <span class="icon">📅</span>
+                <input type="date" id="date" name="date" placeholder="Select Date" />
+            </div>
+            <div class="form-group">
+                <span class="icon">👤</span>
+                <input type="number" id="travelers" name="travelers" placeholder="Travelers" value="1"/>
+            </div>
+            <div class="form-group">
+                <span class="icon">🏨</span>
+                <input type="text" id="roomType" name="roomType" placeholder="Type of Room" list="Room-list" />
+                <datalist id="Room-list">
+                    <option value="Single">
+                    <option value="Double">
+                </datalist>
+            </div>
+            <button type="submit" id="searchButton" class="search-button">Search</button>
+        </form>
+        
+
+    </div>
+
+    <!-- Results Section -->
+    <div id="results-container" class="results-container">
+        <!-- Hotel results will be injected here by JavaScript -->
+    </div>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const city = document.getElementById('city').value;
+            const roomType = document.getElementById('roomType').value;
+
+            fetch('search.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `city=${city}&roomType=${roomType}`,
+            })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('results-container').innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        // Example function to handle booking button click
+        function bookHotel(hotelName) {
+            alert(`You have selected to book: ${hotelName}`);
+            // Redirect or open a booking page/modal (customize as needed)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="Payment.css">
+</head>
+<body>
+    <header>
+        <div>
+            <div class="logo">TRAVEL<span>Center</span></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Hotels.html">Hotels</a></li>
+                <li><a href="Plane.html">Plane</a></li>
+                <li><a href="Transportation.html">Transportation</a></li>
+                <li><a href="Attractions.html">Attractions</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="payment.php" class="active">Payments</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hotel Bookings Section -->
+        <div class="booking-section">
+            <h2>Hotel Bookings</h2>
+            <?php if ($hotelResult->num_rows > 0): ?>
+                <ul>
+                    <?php while ($row = $hotelResult->fetch_assoc()): ?>
+                        <?php
+                        // Calculate the total price based on the number of travelers
+                        $totalPrice = $row['price'] * $row['travelers'];
+                        ?>
+                        <li>
+                            <p><strong>Hotel Name:</strong> <?php echo htmlspecialchars($row['hotel_name']); ?></p>
+                            <p><strong>Room Type:</strong> <?php echo htmlspecialchars($row['room_type']); ?></p>
+                            <p><strong>Price per Traveler:</strong> EGP <?php echo htmlspecialchars($row['price']); ?></p>
+                            <p><strong>City:</strong> <?php echo htmlspecialchars($row['city']); ?></p>
+                            <p><strong>Travelers:</strong> <?php echo htmlspecialchars($row['travelers']); ?></p>
+                            <p><strong>Total Price:</strong> EGP <?php echo number_format($totalPrice, 2); ?></p>
+                            <a href="payment.php?delete_booking=<?php echo $row['id']; ?>&type=hotel" class="delete-button">Delete Booking</a>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            <?php else: ?>
+                <p>You have no hotel bookings.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Plane Bookings Section -->
+        <div class="booking-section">
+            <h2>Plane Bookings</h2>
+            <?php if ($planeResult->num_rows > 0): ?>
+                <ul>
+                    <?php while ($row = $planeResult->fetch_assoc()): ?>
+                        <li>
+                            <p><strong>Plane Name:</strong> <?php echo htmlspecialchars($row['plane_name']); ?></p>
+                            <p><strong>From:</strong> <?php echo htmlspecialchars($row['flight_from']); ?></p>
+                            <p><strong>To:</strong> <?php echo htmlspecialchars($row['flight_to']); ?></p>
+                            <p><strong>Price:</strong> EGP <?php echo htmlspecialchars($row['price']); ?></p>
+                            <p><strong>Departure Date:</strong> <?php echo htmlspecialchars($row['flight_departure_date']); ?></p>
+                            <p><strong>Return Date:</strong> <?php echo htmlspecialchars($row['flight_return_date'] ?? 'Not Available'); ?></p>
+                            <a href="payment.php?delete_booking=<?php echo $row['id']; ?>&type=plane" class="delete-button">Delete Booking</a>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            <?php else: ?>
+                <p>You have no plane bookings.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Transportation Bookings Section -->
+        <div class="booking-section">
+            <h2>Transportation Bookings</h2>
+            <?php if ($transportationResult->num_rows > 0): ?>
+                <ul>
+                    <?php while ($row = $transportationResult->fetch_assoc()): ?>
+                        <li>
+                            <p><strong>Car Type:</strong> <?php echo htmlspecialchars($row['type_of_car']); ?></p>
+                            <p><strong>Driver:</strong> <?php echo htmlspecialchars($row['name_of_driver']); ?></p>
+                            <p><strong>Pickup Location:</strong> <?php echo htmlspecialchars($row['pickup_location']); ?></p>
+                            <p><strong>Pickup Date:</strong> <?php echo htmlspecialchars($row['pickup_date']); ?></p>
+                            <p><strong>Drop-off Date:</strong> <?php echo htmlspecialchars($row['dropoff_date']); ?></p>
+                            <p><strong>Price:</strong> EGP <?php echo htmlspecialchars($row['price_of_trans']); ?></p>
+                            <a href="payment.php?delete_booking=<?php echo $row['id']; ?>&type=transportation" class="delete-button">Delete Booking</a>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            <?php else: ?>
+                <p>You have no transportation bookings.</p>
+            <?php endif; ?>
+        </div>
+
+        <!-- Attractions Bookings Section -->
+        <div class="booking-section">
+            <h2>Attractions Bookings</h2>
+            <?php if ($attractionsResult->num_rows > 0): ?>
+                <ul>
+                    <?php while ($row = $attractionsResult->fetch_assoc()): ?>
+                        <li>
+                            <p><strong>Attraction Name:</strong> <?php echo htmlspecialchars($row['attraction_name']); ?></p>
+                            <p><strong>City:</strong> <?php echo htmlspecialchars($row['city']); ?></p>
+                            <p><strong>Price:</strong> EGP <?php echo htmlspecialchars($row['price']); ?></p>
+                            <p><strong>Visit Date:</strong> <?php echo htmlspecialchars($row['date_of_visit']); ?></p>
+                            <a href="payment.php?delete_booking=<?php echo $row['id']; ?>&type=attractions" class="delete-button">Delete Booking</a>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            <?php else: ?>
+                <p>You have no attractions bookings.</p>
+            <?php endif; ?>
+        </div>
+    </main>
+</body>
+</html>

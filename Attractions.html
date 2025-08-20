@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attractions Results</title>
+    <link rel="stylesheet" href="Attractions.css">
+</head>
+<body>
+    <header>
+        <div class="logo">TRAVEL<span>Center</span></div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="Hotels.html">Hotels</a></li>
+            <li><a href="Plane.html">Plane</a></li>
+            <li><a href="Transportation.html">Transportation</a></li>
+            <li><a href="Attractions.html" class="active">Attractions</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="payment.php">Payments</a></li>
+        </ul>
+    </header>
+
+    <main class="containerattra">
+        <h1>New places: Adventures await!</h1>
+        <form class="rental-formattra" id="search-form">
+            <div class="form-groupattra">
+                <input type="text" name="where-to" id="Where-to" placeholder="📍where to?">
+            </div>
+
+            <div class="form-groupattra">
+                <input type="number" name="visitors" id="visiter" placeholder="👤 visitors" list="visiters-list">
+                <datalist id="visiters-list">
+                    <option value="1">
+                    <option value="2">
+                    <option value="3">
+                    <option value="4">
+                </datalist>
+            </div>
+
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="results-container" id="results-container">
+            <!-- Results will be dynamically inserted here by JavaScript -->
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get the form data
+            const whereTo = document.getElementById('Where-to').value;
+            const visitors = document.getElementById('visiter').value;
+
+            const formData = new FormData();
+            formData.append('where_to', whereTo);
+            formData.append('visitors', visitors);
+
+            // Send the data to the PHP server using fetch API
+            fetch('attractions.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())  // Expecting HTML response
+            .then(data => {
+                document.getElementById('results-container').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

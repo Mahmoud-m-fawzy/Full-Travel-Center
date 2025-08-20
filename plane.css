@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.plane-page {
+    font-family: Arial, sans-serif;
+    background-image: url(https://carola-luebbenjans.de/wp-content/uploads/2018/08/bg-flieger.jpg);
+    background-size: cover;
+    color: #0a0a0a;
+}
+
+/* Full-width header */
+header {
+    background-color: #0b2e6b;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .logo span {
+    color: rgb(85, 161, 233);
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header .nav-links li {
+    margin-left: 20px;
+}
+
+header .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+header .nav-links a:hover {
+    color: rgb(85, 161, 233);
+}
+
+header .nav-links .active {
+    font-weight: bold;
+    color: rgb(54, 132, 205);
+}
+
+
+
+.main-content h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 38px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+
+    text-align: center;
+    color: #2a4a7f;
+}
+
+.plane-search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.plane-search {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 1300px; /* Adjust the width as needed */
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group .icon {
+    font-size: 20px;
+    color: #333;
+}
+
+.input-group input {
+    width: 200px; /* Increase input width */
+    padding: 0.7rem 1rem;
+    font-size: 16px;
+    color: #171718;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-button {
+    background: #3498db;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.search-button:hover {
+    background: #2874a6;
+}
+
+/* Results Container */
+.results-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual Result Item */
+.result-item {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 25px 0;
+    gap: 30px;
+    align-items: center;
+}
+
+/* Image (if you have an image for the plane) */
+.result-item img {
+    width: 240px;
+    height: 160px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Details for each result */
+.result-item .details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.result-item .details h3 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.result-item .details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Location Details */
+.result-item .details .location {
+    font-size: 16px;
+    color: #0071C2;
+    font-weight: bold;
+}
+
+/* Availability Details */
+.result-item .details .availability {
+    font-size: 16px;
+    color: #0071C2;
+}
+
+/* Flight Price */
+.result-item .details .price {
+    font-weight: bold;
+    color: #0071C2;
+    font-size: 18px;
+}
+
+/* Book Button (Green) */
+.result-item .book-button {
+    background-color: #28a745; /* Green color */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.result-item .book-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}

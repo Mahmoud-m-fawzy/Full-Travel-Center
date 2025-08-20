@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard</title>
+    <link rel="stylesheet" href="owner_dashboard.css"> <!-- Link to the separate CSS file -->
+</head>
+<body>
+    <header>
+        <div class="logo">TRAVEL<span>Center</span></div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="Hotels.html">Hotels</a></li>
+            <li><a href="Plane.html">Plane</a></li>
+            <li><a href="Transportation.html">Transportation</a></li>
+            <li><a href="Attractions.html">Attractions</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="owner_dashboard.html" class="active">Dashboard</a></li>
+            <form action="logout.php" method="POST">
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </ul>
+    </header>
+
+    <main>
+        <div class="dashboard-container">
+            <h1>Welcome, Owner!</h1>
+            <p>You are now logged in as an owner.</p>
+    
+            <!-- Dashboard Info Section -->
+            <div class="owner-info">
+                <h2>Owner Dashboard</h2>
+                <p>Here you can manage your properties, view bookings, or perform other administrative tasks.</p>
+    
+                <div class="owner-actions">
+                    <h2>Customer Bookings</h2>
+                    <div class="results-container">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Customer ID</th>
+                                    <th>Booking ID</th>
+                                    <th>Details</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookingData">
+                                <!-- Dynamic rows will be added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                
+    </main>
+    
+    <script>
+        // Sample booking data
+        const bookings = [
+            { customerId: "CUST001", bookingId: "B001", details: "Flight to New York", status: "Confirmed" },
+            { customerId: "CUST002", bookingId: "B002", details: "Hotel in Paris", status: "Pending" },
+            { customerId: "CUST003", bookingId: "B003", details: "Car rental in London", status: "Cancelled" }
+        ];
+    
+        // Populate the booking table
+        const bookingTable = document.getElementById("bookingData");
+        bookings.forEach(booking => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${booking.customerId}</td>
+                <td>${booking.bookingId}</td>
+                <td>${booking.details}</td>
+                <td>${booking.status}</td>
+            `;
+            bookingTable.appendChild(row);
+        });
+    </script>
+</body>
+</html>
